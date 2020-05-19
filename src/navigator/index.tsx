@@ -10,12 +10,14 @@ import {
   HeaderStyleInterpolators,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import Home from '@/pages/Home';
+import BottomTabs from './BottomTabs';
 import Detail from '@/pages/Detail';
 import {Platform, StyleSheet} from 'react-native';
 //根路径下的页面，类型别名
 export type RootStackParamList = {
-  Home: undefined;
+  BottomTabs: {
+    screen?: string;
+  };
   Detail: {id: number}; //允许Detail从外部接受参数
 };
 //导出根路径下的页面作为属性，传递出去
@@ -48,14 +50,10 @@ class Navigator extends React.Component {
           }}>
           {/* Screen组件作为navigator子组件使用，用来定义路由 */}
           <Stack.Screen
-            name="Home"
+            name="BottomTabs"
             //component中传入要渲染的组件
-            component={Home}
+            component={BottomTabs}
             //Screen内的option优先级更高
-            options={{
-              headerTitleAlign: 'left', //设置头部的title居左显示
-              headerTitle: '首页',
-            }}
           />
           <Stack.Screen
             name="Detail"
